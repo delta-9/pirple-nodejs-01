@@ -2,6 +2,11 @@
 
 const _handlers = {
   default: function(data, response) {
+    if (data.method !== 'get') {
+      return response(405, {
+        message: 'Method Not Allowed',
+      });
+    }
     response(404);
   }
 };

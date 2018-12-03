@@ -33,6 +33,11 @@ router.add('post', 'hello', function(data, response) {
 
 // Default handler
 router.addDefault(function(data, response) {
+  if (data.method !== 'get') {
+    return response(405, {
+      message: 'Method Not Allowed',
+    });
+  }
   const payload = {
     message: 'Nothing here',
   };
